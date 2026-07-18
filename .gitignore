@@ -1,0 +1,16 @@
+# Original share archive / platform artifacts
+Shared link.zip
+.thumbnail
+
+# OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+
+# Dependencies / build output (if tooling is added later)
+node_modules/
+dist/

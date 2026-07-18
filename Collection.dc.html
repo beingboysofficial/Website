@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Collections — Being Boys</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #ffffff; }
+    body { font-family: 'Assistant', 'Helvetica Neue', Arial, sans-serif; color: rgb(18,18,18); letter-spacing: 0.02em; }
+    a { color: rgb(18,18,18); text-decoration: none; }
+    a:hover { color: rgba(18,18,18,0.75); }
+    input, textarea, button, select { font-family: 'Assistant', 'Helvetica Neue', Arial, sans-serif; }
+    * { box-sizing: border-box; }
+  </style>
+</helmet>
+
+<div style="min-width:320px">
+
+  <!-- Announcement bar -->
+  <div data-screen-label="Announcement bar" style="position:relative; border-bottom:1px solid rgba(18,18,18,0.08); padding:10px 50px; text-align:center;">
+    <a href="https://www.instagram.com/beingboysofficial/" target="_blank" rel="noopener" title="Instagram" style="position:absolute; left:50px; top:50%; transform:translateY(-50%); display:flex; align-items:center;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgb(18,18,18)" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.4" cy="6.6" r="1.2" fill="rgb(18,18,18)" stroke="none"></circle></svg>
+    </a>
+    <span style="font-size:12px; letter-spacing:0.08em; font-weight:600;">HURRY UP! ONLY FEW STOCKS LEFT!</span>
+  </div>
+
+  <!-- Header -->
+  <header data-screen-label="Header" style="position:sticky; top:0; z-index:40; background:#ffffff; border-bottom:1px solid rgba(18,18,18,0.08); padding:14px 50px; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:16px;">
+    <nav style="display:flex; gap:22px; flex-wrap:wrap; align-items:center;">
+      <a href="Home.dc.html" style="font-size:14px; color:rgba(18,18,18,0.75);" style-hover="color:rgb(18,18,18); text-decoration:underline; text-underline-offset:4px;">Home</a>
+      <a href="Collection.dc.html?c=rc-cars" style="font-size:14px; color:rgba(18,18,18,0.75);" style-hover="color:rgb(18,18,18); text-decoration:underline; text-underline-offset:4px;">High performance RC's</a>
+      <a href="Collection.dc.html?c=mini-rc-drift-cars" style="font-size:14px; color:rgba(18,18,18,0.75);" style-hover="color:rgb(18,18,18); text-decoration:underline; text-underline-offset:4px;">Mini RC Drift Cars</a>
+      <a href="Collection.dc.html?c=tiny-desktop-cars" style="font-size:14px; color:rgba(18,18,18,0.75);" style-hover="color:rgb(18,18,18); text-decoration:underline; text-underline-offset:4px;">Desktop cars</a>
+      <a href="Collection.dc.html?c=crawlers" style="font-size:14px; color:rgba(18,18,18,0.75);" style-hover="color:rgb(18,18,18); text-decoration:underline; text-underline-offset:4px;">Crawlers</a>
+      <a href="Contact.dc.html" style="font-size:14px; color:rgba(18,18,18,0.75);" style-hover="color:rgb(18,18,18); text-decoration:underline; text-underline-offset:4px;">Contact</a>
+    </nav>
+    <a href="Home.dc.html" style="font-size:26px; font-weight:700; letter-spacing:0.04em; white-space:nowrap;">Being Boys</a>
+    <div style="display:flex; gap:10px; justify-content:flex-end; align-items:center;">
+      <a href="#" title="Log in" style="padding:8px; display:flex;" style-hover="opacity:0.7;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(18,18,18)" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c1.8-3.4 4.6-5 8-5s6.2 1.6 8 5"></path></svg>
+      </a>
+      <a href="Cart.dc.html" title="Cart" style="padding:8px; display:flex; position:relative;" style-hover="opacity:0.7;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(18,18,18)" stroke-width="1.6" aria-hidden="true"><rect x="4" y="7" width="16" height="14"></rect><path d="M8 7a4 4 0 0 1 8 0"></path></svg>
+        <span style="position:absolute; top:0; right:0; background:rgb(18,18,18); color:#ffffff; font-size:11px; min-width:17px; height:17px; border-radius:9px; display:flex; align-items:center; justify-content:center; padding:0 4px; opacity:{{ cartBadgeOp }};">{{ cartN }}</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Collection body -->
+  <section data-screen-label="Collection grid" style="max-width:1200px; margin:0 auto; padding:44px 50px 72px;">
+    <h1 style="margin:0 0 30px; font-size:40px; font-weight:600;">{{ title }}</h1>
+    <div style="display:grid; grid-template-columns:230px 1fr; gap:44px; align-items:start;">
+
+      <!-- Filters -->
+      <aside style="font-size:14px;">
+        <div style="font-size:14px; color:rgba(18,18,18,0.7); margin-bottom:18px;">Filter:</div>
+        <div style="border-bottom:1px solid rgba(18,18,18,0.12); padding-bottom:18px; margin-bottom:18px;">
+          <div style="font-weight:600; margin-bottom:12px;">Availability</div>
+          <label style="display:flex; align-items:center; gap:10px; margin-bottom:10px; cursor:pointer;">
+            <input type="checkbox" checked="{{ fIn }}" onChange="{{ toggleIn }}" style="width:16px; height:16px; accent-color:rgb(18,18,18);">
+            <span>In stock ({{ inN }})</span>
+          </label>
+          <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+            <input type="checkbox" checked="{{ fOut }}" onChange="{{ toggleOut }}" style="width:16px; height:16px; accent-color:rgb(18,18,18);">
+            <span>Out of stock ({{ outN }})</span>
+          </label>
+        </div>
+        <div style="border-bottom:1px solid rgba(18,18,18,0.12); padding-bottom:18px; margin-bottom:18px;">
+          <div style="font-weight:600; margin-bottom:10px;">Price</div>
+          <div style="color:rgba(18,18,18,0.7); margin-bottom:12px;">The highest price is {{ maxPrice }}</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <input type="number" placeholder="From ₹" value="{{ pFrom }}" onChange="{{ setFrom }}" style="border:1px solid rgba(18,18,18,0.35); padding:10px 10px; font-size:13px; width:100%;">
+            <input type="number" placeholder="To ₹" value="{{ pTo }}" onChange="{{ setTo }}" style="border:1px solid rgba(18,18,18,0.35); padding:10px 10px; font-size:13px; width:100%;">
+          </div>
+        </div>
+        <div>
+          <div style="font-weight:600; margin-bottom:10px;">Sort by:</div>
+          <select value="{{ sort }}" onChange="{{ setSort }}" style="width:100%; border:1px solid rgba(18,18,18,0.35); padding:10px 10px; font-size:13px; background:#ffffff;">
+            <option value="featured">Featured</option>
+            <option value="az">Alphabetically, A-Z</option>
+            <option value="za">Alphabetically, Z-A</option>
+            <option value="lohi">Price, low to high</option>
+            <option value="hilo">Price, high to low</option>
+          </select>
+        </div>
+      </aside>
+
+      <!-- Grid -->
+      <div>
+        <div style="font-size:14px; color:rgba(18,18,18,0.6); margin-bottom:18px;">{{ countLabel }}</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:32px 20px;">
+          <sc-for list="{{ items }}" as="p" hint-placeholder-count="6">
+            <div>
+              <a href="{{ p.href }}" style="display:block; position:relative; aspect-ratio:1/1; overflow:hidden; background:#f4f4f4;">
+                <img src="{{ p.img }}" alt="{{ p.title }}" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+                <img src="{{ p.img2 }}" alt="" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .35s;" style-hover="opacity:1;">
+                <span style="position:absolute; left:12px; bottom:12px; font-size:12px; letter-spacing:0.06em; padding:6px 13px; border-radius:40px; background:{{ p.badgeBg }}; color:{{ p.badgeColor }}; border:{{ p.badgeBorder }}; opacity:{{ p.badgeOp }};">{{ p.badge }}</span>
+              </a>
+              <a href="{{ p.href }}" style="display:block; margin:14px 0 6px; font-size:15px; line-height:1.4;" style-hover="text-decoration:underline; text-underline-offset:4px;">{{ p.title }}</a>
+              <div style="display:flex; gap:10px; align-items:baseline; flex-wrap:wrap;">
+                <span style="font-size:14px; color:rgba(18,18,18,0.55); text-decoration:line-through;">{{ p.compare }}</span>
+                <span style="font-size:15px; font-weight:600;">{{ p.price }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe + Footer -->
+  <footer data-screen-label="Footer" style="border-top:1px solid rgba(18,18,18,0.08); padding:56px 50px 32px;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:40px;">
+        <h2 style="margin:0 0 18px; font-size:24px; font-weight:600;">Subscribe for latest updates.</h2>
+        <div style="display:inline-flex; border:1px solid rgba(18,18,18,0.35); max-width:360px; width:100%;">
+          <input type="email" placeholder="Email" style="border:none; outline:none; padding:14px 16px; font-size:15px; flex:1; background:none;">
+          <button title="Subscribe" style="background:none; border:none; padding:0 18px; font-size:18px; cursor:pointer;" style-hover="opacity:0.6;">→</button>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; margin-bottom:28px;">
+        <a href="https://www.instagram.com/beingboysofficial/" target="_blank" rel="noopener" title="Instagram" style="display:flex;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(18,18,18)" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.4" cy="6.6" r="1.2" fill="rgb(18,18,18)" stroke="none"></circle></svg>
+        </a>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <span style="font-size:11px; letter-spacing:0.04em; border:1px solid rgba(18,18,18,0.2); border-radius:4px; padding:4px 10px; color:rgba(18,18,18,0.7);">UPI</span>
+          <span style="font-size:11px; letter-spacing:0.04em; border:1px solid rgba(18,18,18,0.2); border-radius:4px; padding:4px 10px; color:rgba(18,18,18,0.7);">Cards</span>
+          <span style="font-size:11px; letter-spacing:0.04em; border:1px solid rgba(18,18,18,0.2); border-radius:4px; padding:4px 10px; color:rgba(18,18,18,0.7);">EMI</span>
+          <span style="font-size:11px; letter-spacing:0.04em; border:1px solid rgba(18,18,18,0.2); border-radius:4px; padding:4px 10px; color:rgba(18,18,18,0.7);">Wallets</span>
+          <span style="font-size:11px; letter-spacing:0.04em; border:1px solid rgba(18,18,18,0.2); border-radius:4px; padding:4px 10px; color:rgba(18,18,18,0.7);">Net banking</span>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(18,18,18,0.08); padding-top:22px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:12px; color:rgba(18,18,18,0.6);">
+        <span>© 2026, <a href="Home.dc.html" style="color:rgba(18,18,18,0.6); text-decoration:underline; text-underline-offset:3px;">Being Boys</a></span>
+        <div style="display:flex; gap:18px; flex-wrap:wrap;">
+          <a href="https://beingboys.com/policies/privacy-policy" target="_blank" rel="noopener" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Privacy policy</a>
+          <a href="https://beingboys.com/policies/refund-policy" target="_blank" rel="noopener" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Refund policy</a>
+          <a href="https://beingboys.com/policies/terms-of-service" target="_blank" rel="noopener" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Terms of service</a>
+          <a href="https://beingboys.com/policies/shipping-policy" target="_blank" rel="noopener" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Shipping policy</a>
+          <a href="https://beingboys.com/policies/contact-information" target="_blank" rel="noopener" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Contact information</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cartN: 0, fIn: false, fOut: false, pFrom: "", pTo: "", sort: "featured" };
+
+  async componentDidMount() {
+    const [data, cart] = await Promise.all([
+      import("./data/store-data.js"),
+      import("./js/cart.js")
+    ]);
+    this.d = data;
+    this.cart = cart;
+    const param = new URLSearchParams(location.search).get("c") || "mini-rc-drift-cars";
+    this.handle = param;
+    this.setState({ cartN: cart.cartCount() });
+  }
+
+  money(n) { return "Rs. " + n.toLocaleString("en-IN", { minimumFractionDigits: 2 }); }
+
+  cardView(p) {
+    return {
+      title: p.title,
+      href: "Product.dc.html?p=" + p.handle,
+      img: p.images[0],
+      img2: p.images[1] || p.images[0],
+      compare: p.compareAt ? this.money(p.compareAt) : "",
+      price: this.money(p.price),
+      badge: p.soldOut ? "Sold out" : (p.compareAt ? "Sale" : ""),
+      badgeBg: p.soldOut ? "rgba(255,255,255,0.92)" : "rgb(18,18,18)",
+      badgeColor: p.soldOut ? "rgb(18,18,18)" : "#ffffff",
+      badgeBorder: p.soldOut ? "1px solid rgba(18,18,18,0.25)" : "1px solid rgb(18,18,18)",
+      badgeOp: (p.soldOut || p.compareAt) ? 1 : 0
+    };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const vals = {
+      cartN: s.cartN,
+      cartBadgeOp: s.cartN > 0 ? 1 : 0,
+      fIn: s.fIn, fOut: s.fOut, pFrom: s.pFrom, pTo: s.pTo, sort: s.sort,
+      toggleIn: () => this.setState(st => ({ fIn: !st.fIn })),
+      toggleOut: () => this.setState(st => ({ fOut: !st.fOut })),
+      setFrom: (e) => this.setState({ pFrom: e.target.value }),
+      setTo: (e) => this.setState({ pTo: e.target.value }),
+      setSort: (e) => this.setState({ sort: e.target.value }),
+      title: "", countLabel: "", maxPrice: "", inN: 0, outN: 0, items: []
+    };
+    const d = this.d;
+    if (!d) return vals;
+
+    const col = d.collections.find(c => c.handle === this.handle) || d.collections[0];
+    vals.title = col.title;
+
+    const all = d.products.filter(p => p.collection === col.handle || (p.alsoIn || []).includes(col.handle));
+    vals.inN = all.filter(p => !p.soldOut).length;
+    vals.outN = all.filter(p => p.soldOut).length;
+    vals.maxPrice = this.money(all.reduce((m, p) => Math.max(m, p.price), 0));
+
+    let list = all.slice();
+    if (s.fIn !== s.fOut) list = list.filter(p => s.fIn ? !p.soldOut : p.soldOut);
+    const from = parseFloat(s.pFrom), to = parseFloat(s.pTo);
+    if (!isNaN(from)) list = list.filter(p => p.price >= from);
+    if (!isNaN(to)) list = list.filter(p => p.price <= to);
+    if (s.sort === "az") list.sort((a, b) => a.title.localeCompare(b.title));
+    if (s.sort === "za") list.sort((a, b) => b.title.localeCompare(a.title));
+    if (s.sort === "lohi") list.sort((a, b) => a.price - b.price);
+    if (s.sort === "hilo") list.sort((a, b) => b.price - a.price);
+
+    vals.items = list.map(p => this.cardView(p));
+    vals.countLabel = list.length + (list.length === 1 ? " product" : " products");
+    return vals;
+  }
+}
+
+</script>
+</body>
+</html>
