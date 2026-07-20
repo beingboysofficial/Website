@@ -5,11 +5,13 @@ import { test, expect } from "@playwright/test";
 // The header cart badge renders its count inside a .sc-interp text node.
 const badgeSel = 'a[title="Cart"] .sc-interp';
 
-test("home page renders hero, nav, and featured content", async ({ page }) => {
+test("home page renders hero, nav, and featured content", async ({ page, isMobile }) => {
   await page.goto("/Home.dc.html");
   await expect(page.getByRole("link", { name: "Being Boys" }).first()).toBeVisible();
-  await expect(page.getByRole("link", { name: "High performance RC's" }).first()).toBeVisible();
   await expect(page.getByText("HURRY UP! ONLY FEW STOCKS LEFT!")).toBeVisible();
+  // On phones the nav lives in the hamburger drawer
+  if (isMobile) await page.locator('a[title="Menu"]').click();
+  await expect(page.getByRole("link", { name: "High performance RC's" }).first()).toBeVisible();
 });
 
 test("index.html redirects to home", async ({ page }) => {

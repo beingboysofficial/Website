@@ -32,6 +32,20 @@ test("empty cart shows account prompt and Featured Collection", async ({ page })
   await expect(page.getByRole("link", { name: /Porsche 911 GT3 - RED/ }).first()).toBeVisible();
 });
 
+test("hamburger opens the nav drawer at phone width", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.goto("/Home.dc.html");
+  await page.locator('a[title="Menu"]').click();
+  await expect(page.getByRole("dialog", { name: "Menu" }).getByRole("link", { name: "Crawlers" })).toBeVisible();
+  await page.keyboard.press("Escape");
+});
+
+test("footer shows policy links", async ({ page }) => {
+  await page.goto("/Home.dc.html");
+  await expect(page.getByRole("link", { name: "Terms of service" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Privacy policy" })).toBeVisible();
+});
+
 test("contact page shows email and phone", async ({ page }) => {
   await page.goto("/Contact.dc.html");
   await expect(page.getByText("beingboysofficial@gmail.com")).toBeVisible();

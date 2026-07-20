@@ -21,7 +21,7 @@ header[data-screen-label="Header"] {
 }
 header[data-screen-label="Header"] > nav a { color: rgba(255, 255, 255, 0.85) !important; }
 header[data-screen-label="Header"] > nav a:hover { color: #ffffff !important; }
-header[data-screen-label="Header"] > a {
+header[data-screen-label="Header"] > a:not([title="Menu"]) {
   /* Swap the text logo for the live site's white PNG wordmark; the link
      text stays in place for screen readers. */
   color: transparent !important;
@@ -30,7 +30,8 @@ header[data-screen-label="Header"] > a {
   width: 140px;
   height: 23px;
 }
-header[data-screen-label="Header"] > div svg { stroke: #ffffff; }
+header[data-screen-label="Header"] > div svg,
+header[data-screen-label="Header"] > a[title="Menu"] svg { stroke: #ffffff; }
 header[data-screen-label="Header"] > div a[title="Cart"] span {
   background: #ffffff !important;
   color: #000000 !important;
@@ -46,6 +47,3 @@ footer[data-screen-label="Footer"] h2 {
   font-size: 16px !important;
   font-weight: 400 !important;
 }
-/* hide payment badges, policy links, and copyright rows (absent on live) */
-footer[data-screen-label="Footer"] a[title="Instagram"] + div { display: none !important; }
-footer[data-screen-label="Footer"] div[style*="border-top"] { display: none !important; }
