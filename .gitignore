@@ -14,3 +14,8 @@ Desktop.ini
 # Dependencies / build output (if tooling is added later)
 node_modules/
 dist/
+
+# Test output
+playwright-report/
+test-results/
+.lighthouseci/

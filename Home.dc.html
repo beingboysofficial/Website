@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -93,7 +93,7 @@
           </a>
           <a href="{{ p.href }}" style="display:block; margin:14px 0 6px; font-size:15px; line-height:1.4;" style-hover="text-decoration:underline; text-underline-offset:4px;">{{ p.title }}</a>
           <div style="display:flex; gap:10px; align-items:baseline; flex-wrap:wrap;">
-            <span style="font-size:14px; color:rgba(18,18,18,0.55); text-decoration:line-through;">{{ p.compare }}</span>
+            <span style="font-size:14px; color:rgba(18,18,18,0.65); text-decoration:line-through;">{{ p.compare }}</span>
             <span style="font-size:15px; font-weight:600;">{{ p.price }}</span>
           </div>
         </div>
@@ -114,12 +114,12 @@
         <div style="font-size:12px; color:rgba(18,18,18,0.6); letter-spacing:0.08em; margin-bottom:8px;">My Store</div>
         <h2 style="margin:0 0 16px; font-size:40px; font-weight:600; line-height:1.15;">Mitsubishi Xtreme Sport</h2>
         <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:6px;">
-          <span style="font-size:16px; color:rgba(18,18,18,0.55); text-decoration:line-through;">{{ spotCompare }}</span>
+          <span style="font-size:16px; color:rgba(18,18,18,0.65); text-decoration:line-through;">{{ spotCompare }}</span>
           <span style="font-size:18px; font-weight:600;">{{ spotPrice }}</span>
           <span style="font-size:12px; letter-spacing:0.06em; padding:6px 13px; border-radius:40px; background:rgb(18,18,18); color:#ffffff;">Sale</span>
         </div>
         <div style="font-size:12px; color:rgba(18,18,18,0.6); margin-bottom:24px;"><a href="https://beingboys.com/policies/shipping-policy" target="_blank" rel="noopener" style="text-decoration:underline; text-underline-offset:3px; color:rgba(18,18,18,0.6);">Shipping</a> calculated at checkout.</div>
-        <div style="font-size:13px; color:rgba(18,18,18,0.7); margin-bottom:8px;">Quantity <span style="color:rgba(18,18,18,0.5);">({{ spotInCart }} in cart)</span></div>
+        <div style="font-size:13px; color:rgba(18,18,18,0.7); margin-bottom:8px;">Quantity <span style="color:rgba(18,18,18,0.65);">({{ spotInCart }} in cart)</span></div>
         <div style="display:flex; align-items:stretch; border:1px solid rgb(18,18,18); width:140px; height:46px; margin-bottom:16px;">
           <button onClick="{{ dec }}" title="Decrease quantity" style="flex:1; background:none; border:none; font-size:18px; cursor:pointer;">−</button>
           <span style="flex:1; display:flex; align-items:center; justify-content:center; font-size:15px;">{{ qty }}</span>
@@ -290,7 +290,9 @@ class Component extends DCLogic {
       toastPe: s.toast ? "auto" : "none",
       counter: (s.slide + 1) + " / 3",
       prev: () => this.setState(st => ({ slide: (st.slide + 2) % 3 })),
-      next: () => this.setState(st => ({ slide: (st.slide + 1) % 3 }))
+      next: () => this.setState(st => ({ slide: (st.slide + 1) % 3 })),
+      // Placeholders for the pre-data render; real values set below once this.d loads
+      spotImage: "", spotPrice: "", spotCompare: "", spotInCart: 0, spotHref: "#", addSpot: () => {}
     };
     const d = this.d;
     if (!d) return vals;

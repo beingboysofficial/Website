@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -83,7 +83,7 @@
         </div>
         <div>
           <div style="font-weight:600; margin-bottom:10px;">Sort by:</div>
-          <select value="{{ sort }}" onChange="{{ setSort }}" style="width:100%; border:1px solid rgba(18,18,18,0.35); padding:10px 10px; font-size:13px; background:#ffffff;">
+          <select aria-label="Sort by" value="{{ sort }}" onChange="{{ setSort }}" style="width:100%; border:1px solid rgba(18,18,18,0.35); padding:10px 10px; font-size:13px; background:#ffffff;">
             <option value="featured">Featured</option>
             <option value="az">Alphabetically, A-Z</option>
             <option value="za">Alphabetically, Z-A</option>
@@ -106,7 +106,7 @@
               </a>
               <a href="{{ p.href }}" style="display:block; margin:14px 0 6px; font-size:15px; line-height:1.4;" style-hover="text-decoration:underline; text-underline-offset:4px;">{{ p.title }}</a>
               <div style="display:flex; gap:10px; align-items:baseline; flex-wrap:wrap;">
-                <span style="font-size:14px; color:rgba(18,18,18,0.55); text-decoration:line-through;">{{ p.compare }}</span>
+                <span style="font-size:14px; color:rgba(18,18,18,0.65); text-decoration:line-through;">{{ p.compare }}</span>
                 <span style="font-size:15px; font-weight:600;">{{ p.price }}</span>
               </div>
             </div>

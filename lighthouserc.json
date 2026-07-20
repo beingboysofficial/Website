@@ -1,0 +1,24 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "npx serve . -l 4173",
+      "startServerReadyPattern": "Accepting connections",
+      "numberOfRuns": 1,
+      "url": [
+        "http://localhost:4173/Home.dc.html",
+        "http://localhost:4173/Collection.dc.html?c=rc-cars",
+        "http://localhost:4173/Product.dc.html?p=mitsubishi-xtreme-sport",
+        "http://localhost:4173/Cart.dc.html"
+      ]
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["warn", { "minScore": 0.7 }],
+        "categories:accessibility": ["error", { "minScore": 0.9 }],
+        "categories:best-practices": ["warn", { "minScore": 0.9 }],
+        "categories:seo": ["warn", { "minScore": 0.8 }]
+      }
+    },
+    "upload": { "target": "temporary-public-storage" }
+  }
+}
