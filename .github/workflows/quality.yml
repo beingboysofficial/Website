@@ -36,6 +36,9 @@ jobs:
 
   e2e:
     runs-on: ubuntu-latest
+    env:
+      # Nightly runs test the live site; push/PR runs test the repo copy pre-deploy
+      BASE_URL: ${{ github.event_name == 'schedule' && 'https://beingboys.sandy2ndacc.workers.dev' || '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

@@ -14,7 +14,8 @@ test("home page renders hero, nav, and featured content", async ({ page }) => {
 
 test("index.html redirects to home", async ({ page }) => {
   await page.goto("/");
-  await expect(page).toHaveURL(/Home\.dc\.html/);
+  // Cloudflare serves clean URLs (Home.dc), local serve keeps Home.dc.html — accept either
+  await expect(page).toHaveURL(/Home\.dc(\.html)?/);
 });
 
 test("collection page lists its products", async ({ page }) => {
