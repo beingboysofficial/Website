@@ -11,6 +11,7 @@ export default defineConfig({
     baseURL: process.env.BASE_URL || "http://localhost:4173",
     trace: "on-first-retry",
     video: "retain-on-failure",
+    screenshot: "on",
     // SLOWMO=<ms> pauses between every browser action so runs are watchable
     launchOptions: { slowMo: Number(process.env.SLOWMO || 0) },
   },
