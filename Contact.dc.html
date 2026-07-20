@@ -13,6 +13,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="./css/mobile.css" rel="stylesheet">
+  <link href="./css/theme.css" rel="stylesheet">
+  <script type="module" src="./js/search.js"></script>
   <style>
     html, body { margin: 0; padding: 0; background: #ffffff; }
     body { font-family: 'Assistant', 'Helvetica Neue', Arial, sans-serif; color: rgb(18,18,18); letter-spacing: 0.02em; }
@@ -45,6 +47,9 @@
     </nav>
     <a href="Home.dc.html" style="font-size:26px; font-weight:700; letter-spacing:0.04em; white-space:nowrap;">Being Boys</a>
     <div style="display:flex; gap:10px; justify-content:flex-end; align-items:center;">
+      <a href="#" title="Search" style="padding:8px; display:flex;" style-hover="opacity:0.7;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(18,18,18)" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
+      </a>
       <a href="#" title="Log in" style="padding:8px; display:flex;" style-hover="opacity:0.7;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(18,18,18)" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c1.8-3.4 4.6-5 8-5s6.2 1.6 8 5"></path></svg>
       </a>
@@ -57,7 +62,12 @@
 
   <!-- Contact form -->
   <section data-screen-label="Contact form" style="max-width:760px; margin:0 auto; padding:56px 50px 88px;">
-    <h1 style="margin:0 0 28px; font-size:40px; font-weight:600;">Contact</h1>
+    <h1 style="margin:0 0 24px; font-size:40px; font-weight:600;">Contact</h1>
+    <p style="margin:0 0 12px; font-size:15px; line-height:1.7;">If you have any questions about our shipping policy, please contact us at:</p>
+    <ul style="margin:0 0 32px; padding-left:22px; font-size:15px; line-height:1.9;">
+      <li>Email: beingboysofficial@gmail.com</li>
+      <li>Phone: 7339323952</li>
+    </ul>
     <form name="contact" method="POST" data-netlify="true" style="display:flex; flex-direction:column; gap:16px;">
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
         <input type="text" name="name" placeholder="Name" style="border:1px solid rgba(18,18,18,0.35); padding:15px 16px; font-size:15px; width:100%;">

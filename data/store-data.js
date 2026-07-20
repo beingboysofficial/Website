@@ -68,7 +68,7 @@ export const products = [
     price: 3999, compareAt: 5999, soldOut: false, featured: true,
     images: [CDN + "1A6379B4-67A3-47FF-8670-0B56A8597B11.jpg?v=1777083480", CDN + "8A6C913D-70C0-47D9-A0C3-ECE63804085E.jpg?v=1777083481"] },
   { handle: "nissan-gt-r-godzilla", title: "Nissan GT-R Godzilla - Black", collection: "mini-rc-drift-cars",
-    price: 2199, compareAt: 3999, soldOut: false, featured: true,
+    price: 1499, compareAt: 3999, soldOut: false, featured: true,
     images: [CDN + "beingboys_nissan_gtr_godzilla_rc_car_chennai_india_drift_front_view.jpg?v=1770542878", CDN + "beingboys_nissan_gtr_godzilla_racing_rc_car_india_side_profile.jpg?v=1770542921"] },
   { handle: "dodge-challenger-muscle-x", title: "Dodge Challenger Muscle - Red", collection: "mini-rc-drift-cars",
     price: 1999, compareAt: 3999, soldOut: true,

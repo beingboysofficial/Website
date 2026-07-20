@@ -13,6 +13,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="./css/mobile.css" rel="stylesheet">
+  <link href="./css/theme.css" rel="stylesheet">
+  <script type="module" src="./js/search.js"></script>
   <style>
     html, body { margin: 0; padding: 0; background: #ffffff; }
     body { font-family: 'Assistant', 'Helvetica Neue', Arial, sans-serif; color: rgb(18,18,18); letter-spacing: 0.02em; }
@@ -45,6 +47,9 @@
     </nav>
     <a href="Home.dc.html" style="font-size:26px; font-weight:700; letter-spacing:0.04em; white-space:nowrap;">Being Boys</a>
     <div style="display:flex; gap:10px; justify-content:flex-end; align-items:center;">
+      <a href="#" title="Search" style="padding:8px; display:flex;" style-hover="opacity:0.7;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(18,18,18)" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
+      </a>
       <a href="#" title="Log in" style="padding:8px; display:flex;" style-hover="opacity:0.7;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(18,18,18)" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c1.8-3.4 4.6-5 8-5s6.2 1.6 8 5"></path></svg>
       </a>
@@ -58,13 +63,12 @@
   <!-- Collection body -->
   <section data-screen-label="Collection grid" style="max-width:1200px; margin:0 auto; padding:44px 50px 72px;">
     <h1 style="margin:0 0 30px; font-size:40px; font-weight:600;">{{ title }}</h1>
-    <div style="display:grid; grid-template-columns:230px 1fr; gap:44px; align-items:start;">
-
-      <!-- Filters -->
-      <aside style="font-size:14px;">
-        <div style="font-size:14px; color:rgba(18,18,18,0.7); margin-bottom:18px;">Filter:</div>
-        <div style="border-bottom:1px solid rgba(18,18,18,0.12); padding-bottom:18px; margin-bottom:18px;">
-          <div style="font-weight:600; margin-bottom:12px;">Availability</div>
+    <!-- Filter bar (horizontal, like the live site) -->
+    <div style="display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-bottom:28px; font-size:14px;">
+      <span style="color:rgba(18,18,18,0.7);">Filter:</span>
+      <details style="position:relative;">
+        <summary style="cursor:pointer; list-style:none; display:flex; align-items:center; gap:6px;">Availability <span aria-hidden="true" style="font-size:10px;">▾</span></summary>
+        <div style="position:absolute; z-index:30; top:calc(100% + 10px); left:0; background:#ffffff; border:1px solid rgba(18,18,18,0.2); padding:18px; min-width:220px;">
           <label style="display:flex; align-items:center; gap:10px; margin-bottom:10px; cursor:pointer;">
             <input type="checkbox" checked="{{ fIn }}" onChange="{{ toggleIn }}" style="width:16px; height:16px; accent-color:rgb(18,18,18);">
             <span>In stock ({{ inN }})</span>
@@ -74,30 +78,32 @@
             <span>Out of stock ({{ outN }})</span>
           </label>
         </div>
-        <div style="border-bottom:1px solid rgba(18,18,18,0.12); padding-bottom:18px; margin-bottom:18px;">
-          <div style="font-weight:600; margin-bottom:10px;">Price</div>
+      </details>
+      <details style="position:relative;">
+        <summary style="cursor:pointer; list-style:none; display:flex; align-items:center; gap:6px;">Price <span aria-hidden="true" style="font-size:10px;">▾</span></summary>
+        <div style="position:absolute; z-index:30; top:calc(100% + 10px); left:0; background:#ffffff; border:1px solid rgba(18,18,18,0.2); padding:18px; min-width:260px;">
           <div style="color:rgba(18,18,18,0.7); margin-bottom:12px;">The highest price is {{ maxPrice }}</div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
             <input type="number" placeholder="From ₹" value="{{ pFrom }}" onChange="{{ setFrom }}" style="border:1px solid rgba(18,18,18,0.35); padding:10px 10px; font-size:13px; width:100%;">
             <input type="number" placeholder="To ₹" value="{{ pTo }}" onChange="{{ setTo }}" style="border:1px solid rgba(18,18,18,0.35); padding:10px 10px; font-size:13px; width:100%;">
           </div>
         </div>
-        <div>
-          <div style="font-weight:600; margin-bottom:10px;">Sort by:</div>
-          <select aria-label="Sort by" value="{{ sort }}" onChange="{{ setSort }}" style="width:100%; border:1px solid rgba(18,18,18,0.35); padding:10px 10px; font-size:13px; background:#ffffff;">
-            <option value="featured">Featured</option>
-            <option value="az">Alphabetically, A-Z</option>
-            <option value="za">Alphabetically, Z-A</option>
-            <option value="lohi">Price, low to high</option>
-            <option value="hilo">Price, high to low</option>
-          </select>
-        </div>
-      </aside>
+      </details>
+      <span style="flex:1;"></span>
+      <span style="color:rgba(18,18,18,0.7);">Sort by:</span>
+      <select aria-label="Sort by" value="{{ sort }}" onChange="{{ setSort }}" style="border:1px solid rgba(18,18,18,0.35); padding:10px 12px; font-size:13px; background:#ffffff;">
+        <option value="featured">Featured</option>
+        <option value="az">Alphabetically, A-Z</option>
+        <option value="za">Alphabetically, Z-A</option>
+        <option value="lohi">Price, low to high</option>
+        <option value="hilo">Price, high to low</option>
+      </select>
+      <span style="color:rgba(18,18,18,0.6);">{{ countLabel }}</span>
+    </div>
 
-      <!-- Grid -->
-      <div>
-        <div style="font-size:14px; color:rgba(18,18,18,0.6); margin-bottom:18px;">{{ countLabel }}</div>
-        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:32px 20px;">
+    <!-- Grid -->
+    <div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:32px 20px;">
           <sc-for list="{{ items }}" as="p" hint-placeholder-count="6">
             <div>
               <a href="{{ p.href }}" style="display:block; position:relative; aspect-ratio:1/1; overflow:hidden; background:#f4f4f4;">
@@ -114,7 +120,6 @@
           </sc-for>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- Subscribe + Footer -->

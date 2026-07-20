@@ -73,6 +73,7 @@ test("combo cart: three products, mixed quantities, correct subtotal", async ({ 
 });
 
 test("qty selector on product page carries into the cart", async ({ page }) => {
+  const p = products.find(x => x.handle === "nissan-gt-r-godzilla");
   await page.goto("/Product.dc.html?p=nissan-gt-r-godzilla");
   await page.getByTitle("Increase quantity").click();
   await page.getByTitle("Increase quantity").click(); // qty = 3
@@ -80,5 +81,5 @@ test("qty selector on product page carries into the cart", async ({ page }) => {
   await expect(page.locator(badgeSel)).toHaveText("3");
 
   await page.goto("/Cart.dc.html");
-  await expect(page.getByText(money(2199 * 3)).first()).toBeVisible();
+  await expect(page.getByText(money(p.price * 3)).first()).toBeVisible();
 });

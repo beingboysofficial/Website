@@ -1,0 +1,51 @@
+/* Live-site (beingboys.com) theme parity: dark header with wordmark logo,
+   color-cycling announcement text, white header icons, minimal footer.
+   Overrides the inline desktop styles, mirroring the Shopify theme. */
+
+/* --- Announcement bar: color-cycling text like the live theme --- */
+div[data-screen-label="Announcement bar"] span {
+  color: #d21f26 !important;
+  font-weight: 400 !important;
+  font-size: 13px !important;
+  letter-spacing: 1px !important;
+  animation: bb-ann-hue 8s linear infinite;
+}
+@keyframes bb-ann-hue {
+  to { filter: hue-rotate(360deg); }
+}
+
+/* --- Header: black background, white nav, wordmark logo --- */
+header[data-screen-label="Header"] {
+  background: #000000 !important;
+  border-bottom: none !important;
+}
+header[data-screen-label="Header"] > nav a { color: rgba(255, 255, 255, 0.85) !important; }
+header[data-screen-label="Header"] > nav a:hover { color: #ffffff !important; }
+header[data-screen-label="Header"] > a {
+  /* Swap the text logo for the live site's white PNG wordmark; the link
+     text stays in place for screen readers. */
+  color: transparent !important;
+  font-size: 0 !important;
+  background: url("https://beingboys.com/cdn/shop/files/BB_LOGO_Final_2_White.png?v=1732172544&width=280") center / contain no-repeat;
+  width: 140px;
+  height: 23px;
+}
+header[data-screen-label="Header"] > div svg { stroke: #ffffff; }
+header[data-screen-label="Header"] > div a[title="Cart"] span {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* --- Footer: minimal like live (subscribe left, Instagram right) --- */
+footer[data-screen-label="Footer"] div[style*="text-align:center"],
+footer[data-screen-label="Footer"] div[style*="text-align: center"] {
+  text-align: left !important;
+  margin-bottom: 24px !important;
+}
+footer[data-screen-label="Footer"] h2 {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+}
+/* hide payment badges, policy links, and copyright rows (absent on live) */
+footer[data-screen-label="Footer"] a[title="Instagram"] + div { display: none !important; }
+footer[data-screen-label="Footer"] div[style*="border-top"] { display: none !important; }

@@ -45,22 +45,24 @@
   [data-screen-label] h2 { font-size: 24px !important; }
 
   /* --- Hero slideshow --- */
-  [data-screen-label="Hero slideshow"] { height: 60vh !important; min-height: 360px !important; }
-  [data-screen-label="Hero slideshow"] h2 { font-size: 30px !important; }
+  [data-screen-label="Hero slideshow"] { height: 380px !important; min-height: 320px !important; }
+  [data-screen-label="Hero slideshow"] h2 { font-size: 28px !important; }
   [data-screen-label="Hero slideshow"] div:has(> h2) {
     left: 16px !important;
     right: 16px;
-    bottom: 56px !important;
-  }
-  [data-screen-label="Hero slideshow"] div:has(> button[title="Previous slide"]) {
-    right: 16px !important;
-    bottom: 10px !important;
   }
 
-  /* --- Product-card grids: fixed 2 columns instead of 230-240px min --- */
-  [data-screen-label] div[style*="auto-fill"] {
+  /* --- Product-card grids: fixed 2 columns instead of desktop 3/4-col --- */
+  [data-screen-label] div[style*="auto-fill"],
+  [data-screen-label] div[style*="repeat(3"],
+  [data-screen-label] div[style*="repeat(4"] {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 24px 12px !important;
+  }
+  /* trust badge tiles read better stacked */
+  [data-screen-label="Trust badges"] div[style*="repeat(3"] {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
   }
 
   /* --- Two-column layouts stack: product detail (1.15fr), home spotlight
