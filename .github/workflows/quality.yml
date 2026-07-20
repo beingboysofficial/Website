@@ -30,6 +30,7 @@ jobs:
             --max-retries 2
             --accept 200..=204,403,429
             --exclude instagram.com
+            --exclude "%7B%7B|\{\{"
             "*.html" "README.md"
           fail: true
 
