@@ -46,6 +46,14 @@ test("footer shows policy links", async ({ page }) => {
   await expect(page.getByRole("link", { name: "Privacy policy" })).toBeVisible();
 });
 
+test("footer policy links open local policy pages", async ({ page }) => {
+  await page.goto("/Home.dc.html");
+  await page.getByRole("link", { name: "Refund policy" }).click();
+  await expect(page).toHaveURL(/Policy\.dc(\.html)?\?p=refund-policy/);
+  await expect(page.getByRole("heading", { name: "Refund policy" })).toBeVisible();
+  await expect(page.getByText(/No Refund Policy/i).first()).toBeVisible();
+});
+
 test("contact page shows email and phone", async ({ page }) => {
   await page.goto("/Contact.dc.html");
   await expect(page.getByText("beingboysofficial@gmail.com")).toBeVisible();

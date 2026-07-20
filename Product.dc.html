@@ -74,7 +74,7 @@
 
       <!-- Gallery -->
       <div>
-        <div style="aspect-ratio:4/3; overflow:hidden; background:#f4f4f4; margin-bottom:12px;">
+        <div style="aspect-ratio:1/1; overflow:hidden; background:#f4f4f4; margin-bottom:12px;">
           <img src="{{ mainImage }}" alt="{{ title }}" style="width:100%; height:100%; object-fit:cover;">
         </div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
@@ -95,7 +95,7 @@
           <span style="font-size:18px; font-weight:600;">{{ price }}</span>
           <span style="font-size:12px; letter-spacing:0.06em; padding:6px 13px; border-radius:40px; background:{{ badgeBg }}; color:{{ badgeColor }}; border:{{ badgeBorder }}; opacity:{{ badgeOp }};">{{ badge }}</span>
         </div>
-        <div style="font-size:12px; color:rgba(18,18,18,0.6); margin-bottom:20px;"><a href="https://beingboys.com/policies/shipping-policy" target="_blank" rel="noopener" style="text-decoration:underline; text-underline-offset:3px; color:rgba(18,18,18,0.6);">Shipping</a> calculated at checkout.</div>
+        <div style="font-size:12px; color:rgba(18,18,18,0.6); margin-bottom:20px;"><a href="Policy.dc.html?p=shipping-policy" style="text-decoration:underline; text-underline-offset:3px; color:rgba(18,18,18,0.6);">Shipping</a> calculated at checkout.</div>
 
         <p style="margin:0 0 24px; font-size:15px; line-height:1.7; color:rgba(18,18,18,0.75);">{{ spec }}</p>
 
@@ -193,11 +193,11 @@
       <div style="border-top:1px solid rgba(18,18,18,0.08); padding-top:22px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:12px; color:rgba(18,18,18,0.6);">
         <span>© 2026, <a href="Home.dc.html" style="color:rgba(18,18,18,0.6); text-decoration:underline; text-underline-offset:3px;">Being Boys</a></span>
         <div style="display:flex; gap:18px; flex-wrap:wrap;">
-          <a href="https://beingboys.com/policies/privacy-policy" target="_blank" rel="noopener" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Privacy policy</a>
-          <a href="https://beingboys.com/policies/refund-policy" target="_blank" rel="noopener" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Refund policy</a>
-          <a href="https://beingboys.com/policies/terms-of-service" target="_blank" rel="noopener" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Terms of service</a>
-          <a href="https://beingboys.com/policies/shipping-policy" target="_blank" rel="noopener" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Shipping policy</a>
-          <a href="https://beingboys.com/policies/contact-information" target="_blank" rel="noopener" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Contact information</a>
+          <a href="Policy.dc.html?p=privacy-policy" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Privacy policy</a>
+          <a href="Policy.dc.html?p=refund-policy" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Refund policy</a>
+          <a href="Policy.dc.html?p=terms-of-service" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Terms of service</a>
+          <a href="Policy.dc.html?p=shipping-policy" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Shipping policy</a>
+          <a href="Policy.dc.html?p=contact-information" style="color:rgba(18,18,18,0.6);" style-hover="color:rgb(18,18,18);">Contact information</a>
         </div>
       </div>
     </div>
@@ -279,7 +279,7 @@ class Component extends DCLogic {
     vals.mainImage = p.images[Math.min(s.imgIdx, p.images.length - 1)];
     vals.thumbs = p.images.map((src, i) => ({
       src: src,
-      border: i === s.imgIdx ? "2px solid rgb(18,18,18)" : "1px solid rgba(18,18,18,0.12)",
+      border: "none",
       pick: () => this.setState({ imgIdx: i })
     }));
     vals.compare = p.compareAt ? this.money(p.compareAt) : "";

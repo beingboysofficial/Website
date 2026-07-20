@@ -8,7 +8,7 @@
 <body>
 <x-dc>
 <helmet>
-  <title>Collections — Being Boys</title>
+  <title>Policy — Being Boys</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
@@ -62,66 +62,10 @@
     </div>
   </header>
 
-  <!-- Collection body -->
-  <section data-screen-label="Collection grid" style="max-width:1200px; margin:0 auto; padding:44px 50px 72px;">
-    <h1 style="margin:0 0 30px; font-size:40px; font-weight:600;">{{ title }}</h1>
-    <!-- Filter bar (horizontal, like the live site) -->
-    <div style="display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-bottom:28px; font-size:14px;">
-      <span style="color:rgba(18,18,18,0.7);">Filter:</span>
-      <details style="position:relative;">
-        <summary style="cursor:pointer; list-style:none; display:flex; align-items:center; gap:6px;">Availability <span aria-hidden="true" style="font-size:10px;">▾</span></summary>
-        <div style="position:absolute; z-index:30; top:calc(100% + 10px); left:0; background:#ffffff; border:1px solid rgba(18,18,18,0.2); padding:18px; min-width:220px;">
-          <label style="display:flex; align-items:center; gap:10px; margin-bottom:10px; cursor:pointer;">
-            <input type="checkbox" checked="{{ fIn }}" onChange="{{ toggleIn }}" style="width:16px; height:16px; accent-color:rgb(18,18,18);">
-            <span>In stock ({{ inN }})</span>
-          </label>
-          <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
-            <input type="checkbox" checked="{{ fOut }}" onChange="{{ toggleOut }}" style="width:16px; height:16px; accent-color:rgb(18,18,18);">
-            <span>Out of stock ({{ outN }})</span>
-          </label>
-        </div>
-      </details>
-      <details style="position:relative;">
-        <summary style="cursor:pointer; list-style:none; display:flex; align-items:center; gap:6px;">Price <span aria-hidden="true" style="font-size:10px;">▾</span></summary>
-        <div style="position:absolute; z-index:30; top:calc(100% + 10px); left:0; background:#ffffff; border:1px solid rgba(18,18,18,0.2); padding:18px; min-width:260px;">
-          <div style="color:rgba(18,18,18,0.7); margin-bottom:12px;">The highest price is {{ maxPrice }}</div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-            <input type="number" placeholder="From ₹" value="{{ pFrom }}" onChange="{{ setFrom }}" style="border:1px solid rgba(18,18,18,0.35); padding:10px 10px; font-size:13px; width:100%;">
-            <input type="number" placeholder="To ₹" value="{{ pTo }}" onChange="{{ setTo }}" style="border:1px solid rgba(18,18,18,0.35); padding:10px 10px; font-size:13px; width:100%;">
-          </div>
-        </div>
-      </details>
-      <span style="flex:1;"></span>
-      <span style="color:rgba(18,18,18,0.7);">Sort by:</span>
-      <select aria-label="Sort by" value="{{ sort }}" onChange="{{ setSort }}" style="border:1px solid rgba(18,18,18,0.35); padding:10px 12px; font-size:13px; background:#ffffff;">
-        <option value="featured">Featured</option>
-        <option value="az">Alphabetically, A-Z</option>
-        <option value="za">Alphabetically, Z-A</option>
-        <option value="lohi">Price, low to high</option>
-        <option value="hilo">Price, high to low</option>
-      </select>
-      <span style="color:rgba(18,18,18,0.6);">{{ countLabel }}</span>
-    </div>
-
-    <!-- Grid -->
-    <div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:32px 20px;">
-          <sc-for list="{{ items }}" as="p" hint-placeholder-count="6">
-            <div>
-              <a href="{{ p.href }}" style="display:block; position:relative; aspect-ratio:1/1; overflow:hidden; background:#f4f4f4;">
-                <img src="{{ p.img }}" alt="{{ p.title }}" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
-                <img src="{{ p.img2 }}" alt="" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .35s;" style-hover="opacity:1;">
-                <span style="position:absolute; left:12px; bottom:12px; font-size:12px; letter-spacing:0.06em; padding:6px 13px; border-radius:40px; background:{{ p.badgeBg }}; color:{{ p.badgeColor }}; border:{{ p.badgeBorder }}; opacity:{{ p.badgeOp }};">{{ p.badge }}</span>
-              </a>
-              <a href="{{ p.href }}" style="display:block; margin:14px 0 6px; font-size:15px; line-height:1.4;" style-hover="text-decoration:underline; text-underline-offset:4px;">{{ p.title }}</a>
-              <div style="display:flex; gap:10px; align-items:baseline; flex-wrap:wrap;">
-                <span style="font-size:14px; color:rgba(18,18,18,0.65); text-decoration:line-through;">{{ p.compare }}</span>
-                <span style="font-size:15px; font-weight:600;">{{ p.price }}</span>
-              </div>
-            </div>
-          </sc-for>
-        </div>
-      </div>
+  <!-- Policy body -->
+  <section data-screen-label="Policy" style="max-width:760px; margin:0 auto; padding:56px 50px 88px;">
+    <h1 style="margin:0 0 28px; font-size:40px; font-weight:600;">{{ policyTitle }}</h1>
+    <div style="font-size:15px; line-height:1.8; color:rgba(18,18,18,0.85);">{{ policyHtml }}</div>
   </section>
 
   <!-- Subscribe + Footer -->
@@ -164,75 +108,28 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { cartN: 0, fIn: false, fOut: false, pFrom: "", pTo: "", sort: "featured" };
+  state = { cartN: 0, loaded: false };
 
   async componentDidMount() {
-    const [data, cart] = await Promise.all([
-      import("./data/store-data.js"),
-      import("./js/cart.js")
+    const [cart, pol] = await Promise.all([
+      import("./js/cart.js"),
+      import("./data/policies.js")
     ]);
-    this.d = data;
-    this.cart = cart;
-    const param = new URLSearchParams(location.search).get("c") || "mini-rc-drift-cars";
-    this.handle = param;
-    this.setState({ cartN: cart.cartCount() });
-  }
-
-  money(n) { return "Rs. " + n.toLocaleString("en-IN", { minimumFractionDigits: 2 }); }
-
-  cardView(p) {
-    return {
-      title: p.title,
-      href: "Product.dc.html?p=" + p.handle,
-      img: p.images[0],
-      img2: p.images[1] || p.images[0],
-      compare: p.compareAt ? this.money(p.compareAt) : "",
-      price: this.money(p.price),
-      badge: p.soldOut ? "Sold out" : (p.compareAt ? "Sale" : ""),
-      badgeBg: p.soldOut ? "rgba(255,255,255,0.92)" : "rgb(18,18,18)",
-      badgeColor: p.soldOut ? "rgb(18,18,18)" : "#ffffff",
-      badgeBorder: p.soldOut ? "1px solid rgba(18,18,18,0.25)" : "1px solid rgb(18,18,18)",
-      badgeOp: (p.soldOut || p.compareAt) ? 1 : 0
-    };
+    const param = new URLSearchParams(location.search).get("p") || "privacy-policy";
+    this.policy = pol.policies[param] || pol.policies["privacy-policy"];
+    document.title = this.policy.title + " — Being Boys";
+    this.setState({ cartN: cart.cartCount(), loaded: true });
   }
 
   renderVals() {
-    const s = this.state;
-    const vals = {
-      cartN: s.cartN,
-      cartBadgeOp: s.cartN > 0 ? 1 : 0,
-      fIn: s.fIn, fOut: s.fOut, pFrom: s.pFrom, pTo: s.pTo, sort: s.sort,
-      toggleIn: () => this.setState(st => ({ fIn: !st.fIn })),
-      toggleOut: () => this.setState(st => ({ fOut: !st.fOut })),
-      setFrom: (e) => this.setState({ pFrom: e.target.value }),
-      setTo: (e) => this.setState({ pTo: e.target.value }),
-      setSort: (e) => this.setState({ sort: e.target.value }),
-      title: "", countLabel: "", maxPrice: "", inN: 0, outN: 0, items: []
+    return {
+      cartN: this.state.cartN,
+      cartBadgeOp: this.state.cartN > 0 ? 1 : 0,
+      policyTitle: this.policy ? this.policy.title : "",
+      policyHtml: this.policy
+        ? React.createElement("div", { dangerouslySetInnerHTML: { __html: this.policy.html } })
+        : ""
     };
-    const d = this.d;
-    if (!d) return vals;
-
-    const col = d.collections.find(c => c.handle === this.handle) || d.collections[0];
-    vals.title = col.title;
-
-    const all = d.products.filter(p => p.collection === col.handle || (p.alsoIn || []).includes(col.handle));
-    vals.inN = all.filter(p => !p.soldOut).length;
-    vals.outN = all.filter(p => p.soldOut).length;
-    vals.maxPrice = this.money(all.reduce((m, p) => Math.max(m, p.price), 0));
-
-    let list = all.slice();
-    if (s.fIn !== s.fOut) list = list.filter(p => s.fIn ? !p.soldOut : p.soldOut);
-    const from = parseFloat(s.pFrom), to = parseFloat(s.pTo);
-    if (!isNaN(from)) list = list.filter(p => p.price >= from);
-    if (!isNaN(to)) list = list.filter(p => p.price <= to);
-    if (s.sort === "az") list.sort((a, b) => a.title.localeCompare(b.title));
-    if (s.sort === "za") list.sort((a, b) => b.title.localeCompare(a.title));
-    if (s.sort === "lohi") list.sort((a, b) => a.price - b.price);
-    if (s.sort === "hilo") list.sort((a, b) => b.price - a.price);
-
-    vals.items = list.map(p => this.cardView(p));
-    vals.countLabel = list.length + (list.length === 1 ? " product" : " products");
-    return vals;
   }
 }
 
