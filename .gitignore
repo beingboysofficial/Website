@@ -21,3 +21,4 @@ test-results/
 .lighthouseci/
 playwright-report.zip
 ui-audit/
+*.zip
