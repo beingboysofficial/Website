@@ -1,0 +1,8 @@
+// Cloudflare deployment config — static assets only, no server code.
+{
+  "name": "beingboys",
+  "compatibility_date": "2026-07-20",
+  "assets": {
+    "directory": "."
+  }
+}
